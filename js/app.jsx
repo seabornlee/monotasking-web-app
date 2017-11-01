@@ -162,6 +162,9 @@ var app = app || {};
 							autoFocus={true}
 						/>
 					</header>
+                    <div>
+                        <button className="start-alarm" onClick={this.startAlarm}>开始单核工作</button>
+                    </div>
 					{main}
 					{footer}
 				</div>
