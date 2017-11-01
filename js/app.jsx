@@ -11,6 +11,8 @@ var app = app || {};
 	app.SHORT_LIST = 'short_list';
 	app.GRASS_CATECHER_LIST = 'grass_catcher_list';
 	app.COMPLETED_LIST = 'completed_list';
+    app.PANORAMA = 'panorama';
+    app.MONOTASKING = 'monotasking';
 	var TodoFooter = app.TodoFooter;
 	var TodoItem = app.TodoItem;
 
@@ -21,7 +23,9 @@ var app = app || {};
 			return {
 				nowShowing: app.SHORT_LIST,
 				editing: null,
-				newTodo: ''
+                newTodo: '',
+                status: app.PANORAMA,
+                countdown: '开始'
 			};
 		},
 
@@ -84,8 +88,17 @@ var app = app || {};
 			this.props.model.clearCompleted();
 		},
 
-        startAlarm: function() {
-            console.log(this.getAlarmTime());
+        toggleAlarm: function() {
+            if (this.state.status === app.PANORAMA) {
+                let countdownTimer = countdown(this.getAlarmTime(), (ts) => {
+                    this.setState({
+                        countdown: ts.toString()
+                    });
+                });
+                this.setState({
+                    status: app.MONOTASKING,
+                });
+            }
         },
 
         getAlarmTime: function() {
@@ -183,7 +196,7 @@ var app = app || {};
 						/>
 					</header>
                     <div>
-                        <button className="start-alarm" onClick={this.startAlarm}>开始单核工作</button>
+                        <button className="start-alarm" onClick={this.toggleAlarm}>{this.state.countdown}</button>
                     </div>
 					{main}
 					{footer}
