@@ -205,7 +205,7 @@ var app = app || {};
 					</header>
                     <div className={this.state.countdown === '' ? 'hidden' : 'timer'}>{this.state.countdown}</div>
                     <div className="action-button">
-                        <button className={this.state.status === app.PANORAMA ? "start-alarm" : "stop-alarm"} onClick={this.toggleAlarm}>{this.state.status === app.PANORAMA ? '开始' : '停止'}</button>
+                        <button className={this.state.status === app.PANORAMA ? "start-alarm" : "stop-alarm"} onClick={this.toggleAlarm} disabled={todos.filter((t) => t.status === 'in_short_list').length === 0 ? 'disabled' : ''}>{this.state.status === app.PANORAMA ? '开始' : '停止'}</button>
                     </div>
 					{main}
 					{footer}
