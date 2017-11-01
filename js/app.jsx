@@ -8,9 +8,9 @@ var app = app || {};
 (function () {
 	'use strict';
 
-	app.ALL_TODOS = 'all';
-	app.ACTIVE_TODOS = 'active';
-	app.COMPLETED_TODOS = 'completed';
+	app.SHORT_LIST = 'short_list';
+	app.GRASS_CATECHER_LIST = 'grass_catcher_list';
+	app.COMPLETED_LIST = 'completed_list';
 	var TodoFooter = app.TodoFooter;
 	var TodoItem = app.TodoItem;
 
@@ -19,7 +19,7 @@ var app = app || {};
 	var TodoApp = React.createClass({
 		getInitialState: function () {
 			return {
-				nowShowing: app.ALL_TODOS,
+				nowShowing: app.SHORT_LIST,
 				editing: null,
 				newTodo: ''
 			};
@@ -28,9 +28,9 @@ var app = app || {};
 		componentDidMount: function () {
 			var setState = this.setState;
 			var router = Router({
-				'/': setState.bind(this, {nowShowing: app.ALL_TODOS}),
-				'/active': setState.bind(this, {nowShowing: app.ACTIVE_TODOS}),
-				'/completed': setState.bind(this, {nowShowing: app.COMPLETED_TODOS})
+				'/': setState.bind(this, {nowShowing: app.SHORT_LIST}),
+				'/grass-catcher-list': setState.bind(this, {nowShowing: app.GRASS_CATCHER_LIST}),
+				'/completed-list': setState.bind(this, {nowShowing: app.COMPLETED_LIST})
 			});
 			router.init('/');
 		},
@@ -91,10 +91,12 @@ var app = app || {};
 
 			var shownTodos = todos.filter(function (todo) {
 				switch (this.state.nowShowing) {
-				case app.ACTIVE_TODOS:
-					return !todo.completed;
-				case app.COMPLETED_TODOS:
-					return todo.completed;
+				case app.SHORT_LIST:
+					return todo.status === 'in_short_list';
+				case app.GRASS_CATCHER_LIST:
+					return todo.status === 'in_grass_catcher_list';
+                case app.COMPLETED_LIST:
+                    return todo.status === 'completed';
 				default:
 					return true;
 				}
@@ -150,10 +152,10 @@ var app = app || {};
 			return (
 				<div>
 					<header className="header">
-						<h1>todos</h1>
+						<h1>单核工作法</h1>
 						<input
 							className="new-todo"
-							placeholder="What needs to be done?"
+							placeholder="你想完成什么？"
 							value={this.state.newTodo}
 							onKeyDown={this.handleNewTodoKeyDown}
 							onChange={this.handleChange}

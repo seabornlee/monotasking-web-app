@@ -33,24 +33,24 @@ var app = app || {};
 						<li>
 							<a
 								href="#/"
-								className={classNames({selected: nowShowing === app.ALL_TODOS})}>
-									All
+								className={classNames({selected: nowShowing === app.SHORT_LIST})}>
+									快捷清单
 							</a>
 						</li>
 						{' '}
 						<li>
 							<a
-								href="#/active"
-								className={classNames({selected: nowShowing === app.ACTIVE_TODOS})}>
-									Active
+								href="#/grass-catcher-list"
+								className={classNames({selected: nowShowing === app.GRASS_CATCHER_LIST})}>
+									集草器
 							</a>
 						</li>
 						{' '}
 						<li>
 							<a
-								href="#/completed"
-								className={classNames({selected: nowShowing === app.COMPLETED_TODOS})}>
-									Completed
+								href="#/completed-list"
+								className={classNames({selected: nowShowing === app.COMPLETED_LIST})}>
+									已完成
 							</a>
 						</li>
 					</ul>
