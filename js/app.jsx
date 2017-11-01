@@ -84,6 +84,26 @@ var app = app || {};
 			this.props.model.clearCompleted();
 		},
 
+        startAlarm: function() {
+            console.log(this.getAlarmTime());
+        },
+
+        getAlarmTime: function() {
+            let current = new XDate();
+            let minutes = current.getMinutes();
+            if (minutes >=0 && minutes < 5) {
+                return current.setMinutes(30).setSeconds(0);
+            }
+
+            if (minutes >= 5 && minutes < 35) {
+                return current.addHours(1).setMinutes(0).setSeconds(0);
+            }
+
+            if (minutes >= 35 && minutes <= 59) {
+                return current.addHours(1).setMinutes(30).setSeconds(0);
+            }
+        },
+
 		render: function () {
 			var footer;
 			var main;
