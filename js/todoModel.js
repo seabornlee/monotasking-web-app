@@ -32,29 +32,25 @@ var app = app || {};
 		this.todos = this.todos.concat({
 			id: Utils.uuid(),
 			title: title,
-			completed: false
+			status: this.getStatus()
 		});
 
 		this.inform();
 	};
 
-	app.TodoModel.prototype.toggleAll = function (checked) {
-		this.todos = this.todos.map(function (todo) {
-			return Utils.extend({}, todo, {completed: checked});
-		});
+    app.TodoModel.prototype.getStatus = function () {
+        if (this.isShortListFull()) {
+            return 'in_grass_catcher_list';
+        }
 
-		this.inform();
-	};
+        return 'in_short_list';
+    };
 
-	app.TodoModel.prototype.toggle = function (todoToToggle) {
-		this.todos = this.todos.map(function (todo) {
-			return todo !== todoToToggle ?
-				todo :
-				Utils.extend({}, todo, {completed: !todo.completed});
-		});
-
-		this.inform();
-	};
+    app.TodoModel.prototype.isShortListFull = function() {
+        return this.todos.filter(function(todo) {
+            return todo.status === 'in_short_list';
+        }).length === 5;
+    }
 
 	app.TodoModel.prototype.destroy = function (todo) {
 		this.todos = this.todos.filter(function (candidate) {
@@ -74,7 +70,7 @@ var app = app || {};
 
 	app.TodoModel.prototype.clearCompleted = function () {
 		this.todos = this.todos.filter(function (todo) {
-			return !todo.completed;
+			return todo.status !== 'completed';
 		});
 
 		this.inform();
