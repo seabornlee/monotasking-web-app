@@ -25,7 +25,8 @@ var app = app || {};
 				editing: null,
                 newTodo: '',
                 status: app.PANORAMA,
-                countdown: '开始'
+                countdown: '',
+                countdownTimer: null
 			};
 		},
 
@@ -97,6 +98,13 @@ var app = app || {};
                 });
                 this.setState({
                     status: app.MONOTASKING,
+                    countdownTimer: countdownTimer
+                });
+            } else {
+                window.clearInterval(this.state.countdownTimer);
+                this.setState({
+                    status: app.PANORAMA,
+                    countdown: ''
                 });
             }
         },
@@ -195,8 +203,8 @@ var app = app || {};
 							autoFocus={true}
 						/>
 					</header>
-                    <div>
-                        <button className="start-alarm" onClick={this.toggleAlarm}>{this.state.countdown}</button>
+                    <div className="action-button">
+                        <button className={this.state.status === app.PANORAMA ? "start-alarm" : "stop-alarm"} onClick={this.toggleAlarm}>{this.state.status === app.PANORAMA ? '开始' : '停止'}</button>
                     </div>
 					{main}
 					{footer}
