@@ -203,6 +203,7 @@ var app = app || {};
 							autoFocus={true}
 						/>
 					</header>
+                    <div className={this.state.countdown === '' ? 'hidden' : 'timer'}>{this.state.countdown}</div>
                     <div className="action-button">
                         <button className={this.state.status === app.PANORAMA ? "start-alarm" : "stop-alarm"} onClick={this.toggleAlarm}>{this.state.status === app.PANORAMA ? '开始' : '停止'}</button>
                     </div>
