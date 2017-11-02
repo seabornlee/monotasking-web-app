@@ -89,23 +89,55 @@ var app = app || {};
 			this.props.model.clearCompleted();
 		},
 
-        toggleAlarm: function() {
-            if (this.state.status === app.PANORAMA) {
-                let countdownTimer = countdown(this.getAlarmTime(), (ts) => {
-                    this.setState({
-                        countdown: ts.toString()
-                    });
-                });
-                this.setState({
-                    status: app.MONOTASKING,
-                    countdownTimer: countdownTimer
+        ensureNotificationPermissionGranted: (callback) => {
+            if (("Notification" in window) &&  Notification.permission !== "granted") {
+                Notification.requestPermission(function (permission) {
+                    console.log(permission)
+                    callback();
                 });
             } else {
-                window.clearInterval(this.state.countdownTimer);
-                this.setState({
-                    status: app.PANORAMA,
-                    countdown: ''
+                callback();
+            }
+        },
+
+        toggleAlarm: function() {
+            if (this.state.status === app.PANORAMA) {
+                this.ensureNotificationPermissionGranted(() => {
+                    let countdownTimer = countdown(this.getAlarmTime(), (ts) => {
+                        let isTimeUp = ts.minutes === 0 && ts.seconds === 0;
+                        if (isTimeUp) {
+                            this.stopTimer(this);
+                            this.notify();
+                        } else {
+                            this.setState({
+                                countdown: ts.toString()
+                            });
+                        }
+                    });
+                    this.setState({
+                        status: app.MONOTASKING,
+                        countdownTimer: countdownTimer
+                    });
                 });
+            } else {
+                this.stopTimer(this);
+            }
+        },
+
+        stopTimer: (that) => {
+            window.clearInterval(that.state.countdownTimer);
+            that.setState({
+                status: app.PANORAMA,
+                countdown: ''
+            });
+        },
+
+        notify: () => {
+            let msg = "恭喜你完成一个单核时段，现在进入全景时段！";
+            if (("Notification" in window) && Notification.permission === "granted") {
+                new Notification(msg);
+            } else {
+                alert(msg);
             }
         },
 
