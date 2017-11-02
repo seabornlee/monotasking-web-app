@@ -165,9 +165,9 @@ var app = app || {};
 			var shownTodos = todos.filter(function (todo) {
 				switch (this.state.nowShowing) {
 				case app.SHORT_LIST:
-					return todo.status === 'in_short_list';
+					return !todo.completed && todo.status === 'in_short_list';
 				case app.GRASS_CATCHER_LIST:
-					return todo.status === 'in_grass_catcher_list';
+					return !todo.completed && todo.status === 'in_grass_catcher_list';
                 case app.COMPLETED_LIST:
                     return todo.completed;
 				default:
