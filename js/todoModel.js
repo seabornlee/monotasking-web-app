@@ -49,7 +49,7 @@ var app = app || {};
 
     app.TodoModel.prototype.isShortListFull = function() {
         return this.todos.filter(function(todo) {
-            return todo.status === 'in_short_list';
+            return !todo.completed && todo.status === 'in_short_list';
         }).length === 5;
     }
 
