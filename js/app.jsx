@@ -195,12 +195,14 @@ var app = app || {};
 			}, 0);
 
 			var completedCount = todos.length - activeTodoCount;
+            let inGrassCatcherCount = todos.filter(t => t.status === 'in_grass_catcher_list').length;
 
 			if (activeTodoCount || completedCount) {
 				footer =
 					<TodoFooter
 						count={activeTodoCount}
 						completedCount={completedCount}
+                        inGrassCatcherCount={inGrassCatcherCount}
 						nowShowing={this.state.nowShowing}
 						onClearCompleted={this.clearCompleted}
 					/>;

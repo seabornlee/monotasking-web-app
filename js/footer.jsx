@@ -43,6 +43,7 @@ var app = app || {};
 								href="#/grass-catcher-list"
 								className={classNames({selected: nowShowing === app.GRASS_CATCHER_LIST})}>
 									集草器
+                                <span className="grass-catcher-items">{this.props.inGrassCatcherCount}</span>
 							</a>
 						</li>
 						{' '}
