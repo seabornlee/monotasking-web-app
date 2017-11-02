@@ -169,7 +169,7 @@ var app = app || {};
 				case app.GRASS_CATCHER_LIST:
 					return todo.status === 'in_grass_catcher_list';
                 case app.COMPLETED_LIST:
-                    return todo.status === 'completed';
+                    return todo.completed;
 				default:
 					return true;
 				}

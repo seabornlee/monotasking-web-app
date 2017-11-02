@@ -32,7 +32,8 @@ var app = app || {};
 		this.todos = this.todos.concat({
 			id: Utils.uuid(),
 			title: title,
-			status: this.getStatus()
+            status: this.getStatus(),
+            completed: false
 		});
 
 		this.inform();
@@ -70,10 +71,18 @@ var app = app || {};
 
 	app.TodoModel.prototype.clearCompleted = function () {
 		this.todos = this.todos.filter(function (todo) {
-			return todo.status !== 'completed';
+			return !todo.completed;
 		});
 
 		this.inform();
 	};
+
+    app.TodoModel.prototype.toggle = function(todoToToggle) {
+		this.todos = this.todos.map(function (todo) {
+			return todo !== todoToToggle ? todo : Utils.extend({}, todo, {completed: !todo.completed});
+		});
+
+		this.inform();
+    }
 
 })();
