@@ -204,7 +204,7 @@ var app = app || {};
 			}, 0);
 
 			var completedCount = todos.length - activeTodoCount;
-            let inGrassCatcherCount = todos.filter(t => t.status === 'in_grass_catcher_list').length;
+            let inGrassCatcherCount = todos.filter(t => !t.completed && t.status === 'in_grass_catcher_list').length;
 
 			if (activeTodoCount || completedCount) {
 				footer =
