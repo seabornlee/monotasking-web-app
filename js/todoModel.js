@@ -53,6 +53,20 @@ var app = app || {};
         }).length === 5;
     }
 
+	app.TodoModel.prototype.move = function (todoToMove) {
+        if (this.isShortListFull()) {
+            return false;
+        }
+
+		this.todos = this.todos.map(function (todo) {
+			return todo !== todoToMove ? todo : Utils.extend({}, todo, {status: 'in_short_list'});
+		});
+
+		this.inform();
+
+        return true;
+	};
+
 	app.TodoModel.prototype.destroy = function (todo) {
 		this.todos = this.todos.filter(function (candidate) {
 			return candidate !== todo;

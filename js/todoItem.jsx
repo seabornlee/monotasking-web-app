@@ -91,6 +91,7 @@ var app = app || {};
 						<label onDoubleClick={this.handleEdit}>
 							{this.props.todo.title}
 						</label>
+                        <button className={this.props.movable ? 'move' : 'hidden'} onClick={this.props.onMove} />
 						<button className="destroy" onClick={this.props.onDestroy} />
 					</div>
 					<input

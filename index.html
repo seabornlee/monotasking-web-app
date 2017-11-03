@@ -39,6 +39,33 @@
             font-weight: bold;
             padding: 5px;
           }
+
+          .todo-list li .move {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 45px;
+            bottom: 0;
+            width: 40px;
+            height: 40px;
+            margin: auto 0;
+            font-size: 30px;
+            color: #cc9a9a;
+            margin-bottom: 11px;
+            transition: color 0.2s ease-out;
+          }
+
+          .todo-list li .move:hover {
+              color: #af5b5e;
+          }
+
+          .todo-list li .move:after {
+              content: '<-';
+          }
+
+          .todo-list li:hover .move {
+              display: block;
+          }
         </style>
 	</head>
 	<body>

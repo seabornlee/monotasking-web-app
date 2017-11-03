@@ -68,6 +68,13 @@ var app = app || {};
 			this.props.model.toggle(todoToToggle);
 		},
 
+        move: function (todo) {
+            let moved = this.props.model.move(todo);
+            if (!moved) {
+                alert('快捷清单已满!');
+            }
+        },
+
 		destroy: function (todo) {
 			this.props.model.destroy(todo);
 		},
@@ -182,6 +189,8 @@ var app = app || {};
 						todo={todo}
 						onToggle={this.toggle.bind(this, todo)}
 						onDestroy={this.destroy.bind(this, todo)}
+                        movable={todo.status === 'in_grass_catcher_list'}
+                        onMove={this.move.bind(this, todo)}
 						onEdit={this.edit.bind(this, todo)}
 						editing={this.state.editing === todo.id}
 						onSave={this.save.bind(this, todo)}
