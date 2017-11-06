@@ -111,7 +111,10 @@ var app = app || {};
             if (this.state.status === app.PANORAMA) {
                 this.ensureNotificationPermissionGranted(() => {
                     let countdownTimer = countdown(this.getAlarmTime(), (ts) => {
+                        console.log(ts.minutes)
+                        console.log(ts.seconds)
                         let isTimeUp = ts.minutes === 0 && ts.seconds === 0;
+                        console.log(isTimeUp)
                         if (isTimeUp) {
                             this.stopTimer(this);
                             this.notify();
