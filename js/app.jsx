@@ -240,7 +240,7 @@ var app = app || {};
 						<h1>单核工作法</h1>
 						<input
 							className="new-todo"
-							placeholder="你想完成什么？"
+							placeholder="此时此刻，我的时间最好用来做什么？"
 							value={this.state.newTodo}
 							onKeyDown={this.handleNewTodoKeyDown}
 							onChange={this.handleChange}
