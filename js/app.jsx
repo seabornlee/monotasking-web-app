@@ -244,7 +244,7 @@ var app = app || {};
 						<h1>单核工作法</h1>
             <div className={this.state.countdown === '' ? 'hidden' : 'timer'}>{this.state.countdown}</div>
             <div className={activeTodoCount > 0 ? "action-button" : 'hidden' }>
-              <button className={this.state.status === app.PANORAMA ? "start-alarm" : "stop-alarm"} onClick={this.toggleAlarm} disabled={todos.filter((t) => t.status === 'in_short_list').length === 0 ? 'disabled' : ''}>{this.state.status === app.PANORAMA ? '开始' : '停止'}</button>
+              <button className={this.state.status === app.PANORAMA ? "start-alarm" : "stop-alarm"} onClick={this.toggleAlarm} disabled={todos.filter((t) => t.status === 'in_short_list').length === 0 ? 'disabled' : ''}>{this.state.status === app.PANORAMA ? '开始单核' : '停止'}</button>
             </div>
 						<input
 							className="new-todo"
