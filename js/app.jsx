@@ -51,13 +51,17 @@ var app = app || {};
 
 			event.preventDefault();
 
+      this.saveTodo();
+		},
+
+    saveTodo: function() {
 			var val = this.state.newTodo.trim();
 
 			if (val) {
 				this.props.model.addTodo(val);
 				this.setState({newTodo: ''});
 			}
-		},
+    },
 
 		toggleAll: function (event) {
 			var checked = event.target.checked;
@@ -238,6 +242,10 @@ var app = app || {};
 				<div>
 					<header className="header">
 						<h1>单核工作法</h1>
+            <div className={this.state.countdown === '' ? 'hidden' : 'timer'}>{this.state.countdown}</div>
+            <div className={activeTodoCount > 0 ? "action-button" : 'hidden' }>
+              <button className={this.state.status === app.PANORAMA ? "start-alarm" : "stop-alarm"} onClick={this.toggleAlarm} disabled={todos.filter((t) => t.status === 'in_short_list').length === 0 ? 'disabled' : ''}>{this.state.status === app.PANORAMA ? '开始' : '停止'}</button>
+            </div>
 						<input
 							className="new-todo"
 							placeholder="此时此刻，我的时间最好用来做什么？"
@@ -246,11 +254,8 @@ var app = app || {};
 							onChange={this.handleChange}
 							autoFocus={true}
 						/>
+            <button className='save-button' onClick={this.saveTodo} disabled={this.state.newTodo === '' ? 'disabled' : ''}>+</button>
 					</header>
-                    <div className={this.state.countdown === '' ? 'hidden' : 'timer'}>{this.state.countdown}</div>
-                    <div className="action-button">
-                        <button className={this.state.status === app.PANORAMA ? "start-alarm" : "stop-alarm"} onClick={this.toggleAlarm} disabled={todos.filter((t) => t.status === 'in_short_list').length === 0 ? 'disabled' : ''}>{this.state.status === app.PANORAMA ? '开始' : '停止'}</button>
-                    </div>
 					{main}
 					{footer}
 				</div>
