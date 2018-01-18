@@ -1,0 +1,15 @@
+# http://editorconfig.org
+root = true
+
+# 对所有文件生效
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+end_of_line = lf
+trim_trailing_whitespace = true
+
+# 对后缀名为 md 的文件生效
+[*.md]
+trim_trailing_whitespace = false
