@@ -1,22 +1,30 @@
 @import '../../styles/common';
 
 .app-container {
-  .new-task {
-    background-color: $brand-color-white;
-    border-radius: 3px;
-    border: none;
-    font-size: 24px;
-    height: 70px;
-    padding: 0 22px;
-    width: 388px;
-  }
+  .input-group {
+    box-shadow: 0 5px 10px 0 rgba(6, 0, 1, 0.1);
+    display: flex;
+    margin: 76px auto 0;
+    overflow: hidden;
+    width: 460px;
 
-  .btn-add-task {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    border: none;
-    height: 70px;
-    position: relative;
-    width: 72px;
+    .new-task {
+      background-color: $brand-color-white;
+      border-radius: 3px;
+      border: none;
+      font-size: 24px;
+      height: 70px;
+      padding: 0 22px;
+      width: 388px;
+    }
+
+    .btn-add-task {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      border: none;
+      height: 70px;
+      position: relative;
+      width: 72px;
+    }
   }
 }
