@@ -5,19 +5,24 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  Redirect,
 } from 'react-router-dom'
 
-import App from './App'
-import QuickList from './pages/QuickList'
-
 import { store } from './store'
+import { App } from './pages/App'
+import { QuickList } from './pages/QuickList'
+import { GrassCatcher } from './pages/GrassCatcher'
+import { Completed } from './pages/Completed'
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <App>
         <Switch>
-          <Route path='/' component={QuickList} />
+          <Redirect exact={true} path='/' to='/quick-list' />
+          <Route path='/quick-list' component={QuickList} />
+          <Route path='/grass-catcher' component={GrassCatcher} />
+          <Route path='/completed' component={Completed} />
         </Switch>
       </App>
     </Router>
