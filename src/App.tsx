@@ -1,12 +1,12 @@
 import React from 'react'
 import QuickList from './pages/QuickList'
 
-interface Props {}
+interface Props {
+  children: React.ReactNode
+}
 
 const App: React.StatelessComponent<Props> = (props: Props) => (
-  <div>
-    <QuickList />
-  </div>
+  <div>{props.children}</div>
 )
 
 export default App
