@@ -3,6 +3,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const paths = require("./paths");
 
+const PORT = 5080
+
 module.exports = {
   entry: paths.appIndex,
   output: {
@@ -43,8 +45,8 @@ module.exports = {
     ]
   },
   plugins: [
-    // new webpack.HotModuleReplacementPlugin(),
-    // new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new CleanWebpackPlugin([paths.appBuildDev], {
       root: process.cwd()
     }),
@@ -54,4 +56,17 @@ module.exports = {
       template: paths.appHtml
     })
   ],
+  devServer: {
+    disableHostCheck: true,
+    historyApiFallback: true,
+    port: PORT,
+    inline: true,
+    hot: true,
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://dcsp-qa.chinaeast.cloudapp.chinacloudapi.cn',
+    //     changeOrigin: true,
+    //   }
+    // }
+  }
 };
