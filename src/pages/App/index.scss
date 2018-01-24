@@ -1,14 +1,19 @@
 @import '../../styles/common';
 
 .app-container {
-  .input-group {
+  header {
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .new-task {
     box-shadow: 0 5px 10px 0 rgba(6, 0, 1, 0.1);
     display: flex;
     margin: 76px auto 0;
     overflow: hidden;
     width: 460px;
 
-    .new-task {
+    .new-task-input {
       background-color: $brand-color-white;
       border-radius: 3px;
       border: none;
@@ -18,13 +23,34 @@
       width: 388px;
     }
 
-    .btn-add-task {
+    .new-task-btn {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
       border: none;
       height: 70px;
       position: relative;
       width: 72px;
+    }
+  }
+
+  .start-mono-btn {
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 8px 25px 0 rgba(0, 84, 255, 0.25);
+    display: block;
+    font-size: 22px;
+    height: 55px;
+    margin: 40px auto 0;
+    width: 265px;
+  }
+
+  footer {
+    text-align: center;
+    margin: 68px 0 36px 0;
+
+    a {
+      color: rgba(38, 38, 38, 0.25);
+      font-size: 16px;
     }
   }
 }

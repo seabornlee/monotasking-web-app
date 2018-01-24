@@ -29,6 +29,7 @@ html, body {
 body {
   margin: 0;
   overflow-y: scroll;
+  background-color: $brand-color-bg-gray;
 }
 
 /**
@@ -110,6 +111,10 @@ a:focus {
   background-color: transparent; /* 1 */
   -webkit-text-decoration-skip: objects; /* 2 */
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 /**
