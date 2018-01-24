@@ -15,6 +15,7 @@ import { GrassCatcher } from './pages/GrassCatcher'
 import { Completed } from './pages/Completed'
 
 import './assets/icons/icons.css'
+import './styles/index.scss'
 
 ReactDOM.render(
   <Provider store={store}>

@@ -13,6 +13,26 @@ module.exports = merge.smart(baseConf, {
     path: paths.appBuildDev,
     filename: "static/js/[name]-bundle-[hash:8].js"
   },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [{
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+      },
+    ]
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),

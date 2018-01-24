@@ -6,7 +6,8 @@
     "icon": "icon-font-generator svgs/*.svg -o src/assets/icons/ --csstp src/assets/icons/icon-css-tmpl.hbs",
     "tslint-fix": "tslint --fix -c tslint.json -p tsconfig.json",
     "start": "yarn run icon && webpack-dev-server --colors --config config/webpack.config.dev.js",
-    "build": "webpack --progress -p --colors --config config/webpack.config.dev.js"
+    "build": "webpack --progress -p --colors --config config/webpack.config.dev.js",
+    "preinstall": "export SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass"
   },
   "author": "TylerChangMore@gmail.com",
   "license": "MIT",
@@ -35,9 +36,11 @@
     "css-loader": "^0.28.9",
     "html-webpack-plugin": "^2.30.1",
     "icon-font-generator": "^1.1.1",
+    "node-sass": "^4.7.2",
     "postcss": "^6.0.16",
     "postcss-loader": "^2.0.10",
     "redux-devtools-extension": "^2.13.2",
+    "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.19.1",
     "ts-loader": "^3.2.0",
