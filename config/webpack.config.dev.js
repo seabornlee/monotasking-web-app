@@ -35,6 +35,19 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.css$/,
+        use: [{
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+          },
+        ],
+      },
+      {
         test: /\.(ico|png|woff|woff2|eot|ttf|svg)$/,
         loader: "url-loader",
         options: {

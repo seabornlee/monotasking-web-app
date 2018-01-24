@@ -14,6 +14,8 @@ import { QuickList } from './pages/QuickList'
 import { GrassCatcher } from './pages/GrassCatcher'
 import { Completed } from './pages/Completed'
 
+import './assets/icons/icons.css'
+
 ReactDOM.render(
   <Provider store={store}>
     <Router>

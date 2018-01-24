@@ -17,3 +17,6 @@ yarn-error.log*
 #IDE
 /.idea
 /.vscode
+
+# icons
+/src/assets/icons/icons.*
