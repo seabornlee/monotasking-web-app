@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
@@ -9,13 +10,15 @@ import {
 } from 'react-router-dom'
 
 import { store } from './store'
-import { App } from './pages/App'
+import App from './pages/App'
 import { QuickList } from './pages/QuickList'
 import { GrassCatcher } from './pages/GrassCatcher'
 import { Completed } from './pages/Completed'
 
 import './assets/icons/icons.css'
 import './styles/index.scss'
+
+axios.defaults.baseURL = '/v1'
 
 ReactDOM.render(
   <Provider store={store}>

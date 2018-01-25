@@ -46,11 +46,11 @@ module.exports = merge.smart(baseConf, {
     port: PORT,
     inline: true,
     hot: true,
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://dcsp-qa.chinaeast.cloudapp.chinacloudapi.cn',
-    //     changeOrigin: true,
-    //   }
-    // }
+    proxy: {
+      '/v1': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      }
+    }
   }
 })
