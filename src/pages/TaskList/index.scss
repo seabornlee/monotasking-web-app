@@ -19,7 +19,6 @@
     font-size: $font-size-lg;
     height: 50px;
     justify-content: space-between;
-    line-height: 50px;
     padding: 0 16px 0 10px;
 
     & + li {
@@ -32,12 +31,19 @@
       }
     }
 
+    & > .icon-roundcheck {
+      margin-right: 8px;
+      font-size: 18px;
+      color: $brand-color-primary;
+    }
+
     .task-title {
       display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       width: 14em;
+      flex-grow: 2;
     }
 
     .actions {
