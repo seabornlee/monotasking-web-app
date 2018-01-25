@@ -1,11 +1,15 @@
-import axios from 'axios'
 import React from 'react'
 import { connect } from 'react-redux'
 import { returntypeof } from 'react-redux-typescript'
+import { withRouter, Switch, Route } from 'react-router-dom'
 
 import { Tabs } from '../Tabs'
 import { Button } from '../../components/Button'
 import { fetchQuickListTasks, fetchGrassCatcherTasks, fetchCompletedTasks } from '../../thunks/tasks'
+
+import QuickList from '../QuickList'
+import GrassCatcher from '../GrassCatcher'
+import Completed from '../Completed'
 
 import './index.scss'
 
@@ -45,8 +49,15 @@ class App extends React.Component<Props> {
           <input className='new-task-input' type='text' placeholder='添加 #接下来最应该开始的工作#'/>
           <Button type='primary' className='new-task-btn'><i className='icon icons-download'/></Button>
         </div>
-        {this.props.children}
+
+        <Switch>
+          <Route exact={true} path='/quick-list' component={QuickList} />
+          <Route exact={true} path='/grass-catcher' component={GrassCatcher} />
+          <Route exact={true} path='/completed' component={Completed} />
+        </Switch>
+
         <Tabs />
+
         <Button type='primary' className='start-mono-btn'>开始单核</Button>
         <footer>
           <a href='https://baike.baidu.com/item/%E5%8D%95%E6%A0%B8%E5%B7%A5%E4%BD%9C%E6%B3%95/22119461?fr=aladdin'>什么是单核工作法？</a>
@@ -56,4 +67,4 @@ class App extends React.Component<Props> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App) as any)
