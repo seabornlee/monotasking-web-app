@@ -1,7 +1,9 @@
+@import '../../styles/common';
+
 .task-list {
-  background: #fff;
+  background: $brand-color-white;
   border-radius: 5px;
-  height: 340px;
+  height: 290px;
   list-style: none;
   margin: 40px auto 0;
   padding: 25px 22px;
@@ -9,16 +11,25 @@
   overflow-y: auto;
 
   li {
+    align-items: center;
     border-radius: 2px;
-    border: solid 1px rgba(0, 0, 0, 0.06);
-    color: rgba(38, 38, 38, 0.4);
-    font-size: 16px;
+    border: solid 1px $brand-color-line-gray;
+    color: $brand-color-text-black;
+    display: flex;
+    font-size: $font-size-lg;
     height: 50px;
-    line-height: 48px;
+    justify-content: space-between;
+    line-height: 50px;
     padding: 0 16px 0 10px;
 
     & + li {
       margin-top: 10px;
+    }
+
+    &:hover {
+      .actions {
+        display: flex;
+      }
     }
 
     .task-title {
@@ -26,7 +37,21 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      width: 12em;
+      width: 14em;
+    }
+
+    .actions {
+      align-items: center;
+      display: none;
+
+      .iconfont {
+        cursor: pointer;
+        font-size: 20px;
+
+        & + .iconfont {
+          margin-left: 8px;
+        }
+      }
     }
   }
 }

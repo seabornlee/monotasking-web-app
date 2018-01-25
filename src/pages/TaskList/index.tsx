@@ -15,6 +15,12 @@ class TaskList extends React.Component<Props> {
             return (
               <li key={task.id}>
                 <span className='task-title'>{task.title}</span>
+                <div className='actions'>
+                  <i className='iconfont icon-roundcheck' />
+                  <i className='iconfont icon-pullleft' />
+                  <i className='iconfont icon-pullright' />
+                  <i className='iconfont icon-delete' />
+                </div>
               </li>
             )
           })

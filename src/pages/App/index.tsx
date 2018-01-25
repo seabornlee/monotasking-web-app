@@ -47,7 +47,7 @@ class App extends React.Component<Props> {
         </header>
         <div className='new-task'>
           <input className='new-task-input' type='text' placeholder='添加 #接下来最应该开始的工作#'/>
-          <Button type='primary' className='new-task-btn'><i className='icon icons-download'/></Button>
+          <Button type='primary' className='new-task-btn'><i className='iconfont icon-add' /></Button>
         </div>
 
         <Switch>

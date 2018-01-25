@@ -12,7 +12,7 @@ import {
 import { store } from './store'
 import App from './pages/App'
 
-import './assets/icons/icons.css'
+import './assets/icons/iconfont.css'
 import './styles/index.scss'
 
 axios.defaults.baseURL = '/v1'
