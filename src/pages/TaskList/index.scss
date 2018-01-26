@@ -14,7 +14,7 @@
     align-items: center;
     border-radius: 2px;
     border: solid 1px $brand-color-line-gray;
-    color: $brand-color-text-black;
+    color: $brand-color-text-gray;
     display: flex;
     font-size: $font-size-lg;
     height: 50px;
@@ -52,7 +52,12 @@
 
       .iconfont {
         cursor: pointer;
+        color: $brand-color-text-gray-opacity;
         font-size: 20px;
+
+        &:hover {
+          color: $brand-color-text-gray;
+        }
 
         & + .iconfont {
           margin-left: 8px;
