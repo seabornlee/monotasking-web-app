@@ -23,7 +23,7 @@ interface OwnProps {
 }
 type Props = StateProps & DispatchProps & OwnProps
 
-class Cpmpleted extends React.Component<Props> {
+class Completed extends React.Component<Props> {
   public render () {
     return (
       <TaskList tasks={this.props.tasks} onDelete={this.onDelete} />
@@ -35,4 +35,4 @@ class Cpmpleted extends React.Component<Props> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cpmpleted)
+export default connect(mapStateToProps, mapDispatchToProps)(Completed)
