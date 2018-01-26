@@ -4,6 +4,10 @@ import './index.scss'
 
 interface Props {
   tasks: Tasks
+  onCompleteTask?: (task: Task) => void
+  onMoveToGrassCatcher?: (task: Task) => void
+  onMoveToQuickList?: (task: Task) => void
+  onDelete?: (task: Task) => void
 }
 
 class TaskList extends React.Component<Props> {
@@ -18,21 +22,13 @@ class TaskList extends React.Component<Props> {
   private renderTask = (task: Task) => {
     return (
       <li key={task.id}>
-        {
-          this.isCompleted(task) ? <i className='iconfont icon-roundcheck' /> : ''
-        }
+        {this.isCompleted(task) ? <i className='iconfont icon-roundcheck' /> : ''}
         <span className='task-title'>{task.title}</span>
         <div className='actions'>
-          {
-            !this.isCompleted(task) ? <i className='iconfont icon-roundcheck' /> : ''
-          }
-          {
-            this.isInGrassCatcher(task) ? <i className='iconfont icon-pullleft' /> : ''
-          }
-          {
-            this.isInQuickList(task) ? <i className='iconfont icon-pullright' /> : ''
-          }
-          <i className='iconfont icon-delete' />
+          {!this.isCompleted(task) ? <i onClick={this.onCompleteTask(task)} className='iconfont icon-roundcheck' /> : ''}
+          {this.isInGrassCatcher(task) ? <i onClick={this.onMoveToQuickList(task)} className='iconfont icon-pullleft' /> : ''}
+          {this.isInQuickList(task) ? <i onClick={this.onMoveToGrassCatcher(task)} className='iconfont icon-pullright' /> : ''}
+          <i onClick={this.onDelete(task)} className='iconfont icon-delete' />
         </div>
       </li>
     )
@@ -48,6 +44,26 @@ class TaskList extends React.Component<Props> {
 
   private isCompleted = (task: Task) => {
     return task.completed_at !== null
+  }
+
+  private onCompleteTask = (task: Task) => (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault()
+    this.props.onCompleteTask && this.props.onCompleteTask(task)
+  }
+
+  private onMoveToGrassCatcher = (task: Task) => (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault()
+    this.props.onMoveToGrassCatcher && this.props.onMoveToGrassCatcher(task)
+  }
+
+  private onMoveToQuickList = (task: Task) => (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault()
+    this.props.onMoveToQuickList && this.props.onMoveToQuickList(task)
+  }
+
+  private onDelete = (task: Task) => (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault()
+    this.props.onDelete && this.props.onDelete(task)
   }
 }
 

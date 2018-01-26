@@ -29,8 +29,12 @@ class QuickList extends React.Component<Props> {
 
   public render () {
     return (
-      <TaskList tasks={this.props.tasks}/>
+      <TaskList tasks={this.props.tasks} onCompleteTask={this.onCompleteTask} />
     )
+  }
+
+  private onCompleteTask = () => {
+    console.log('completed')
   }
 }
 

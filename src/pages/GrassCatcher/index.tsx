@@ -25,8 +25,12 @@ type Props = StateProps & DispatchProps & OwnProps
 class GrassCatcher extends React.Component<Props> {
   public render () {
     return (
-      <TaskList tasks={this.props.tasks}/>
+      <TaskList tasks={this.props.tasks} onMoveToQuickList={this.onMoveToQuickList} />
     )
+  }
+
+  private onMoveToQuickList = (task: Task) => {
+    console.log(task)
   }
 }
 

@@ -60,7 +60,7 @@ class App extends React.Component<Props> {
 
         <Button type='primary' className='start-mono-btn'>开始单核</Button>
         <footer>
-          <a href='https://baike.baidu.com/item/%E5%8D%95%E6%A0%B8%E5%B7%A5%E4%BD%9C%E6%B3%95/22119461?fr=aladdin'>什么是单核工作法？</a>
+          <a href='https://baike.baidu.com/item/%E5%8D%95%E6%A0%B8%E5%B7%A5%E4%BD%9C%E6%B3%95/22119461?fr=aladdin' target='_blank'>什么是单核工作法？</a>
         </footer>
       </div>
     )
