@@ -4,7 +4,7 @@ import { returntypeof } from 'react-redux-typescript'
 
 import TaskList from '../TaskList'
 import { selectGrassCatcherTasks } from '../../selectors/tasks'
-import { fetchGrassCatcherTasks } from '../../thunks/tasks'
+import { fetchGrassCatcherTasks, completeTask, moveToQuickList, deleteTask } from '../../thunks/tasks'
 
 const mapStateToProps = (state) => ({
   tasks: selectGrassCatcherTasks(state),
@@ -14,6 +14,9 @@ type StateProps = typeof mapStateToPropsType
 
 const mapDispatchToProps = {
   fetchGrassCatcherTasks,
+  completeTask,
+  moveToQuickList,
+  deleteTask,
 }
 type DispatchProps = typeof mapDispatchToProps
 
@@ -25,12 +28,20 @@ type Props = StateProps & DispatchProps & OwnProps
 class GrassCatcher extends React.Component<Props> {
   public render () {
     return (
-      <TaskList tasks={this.props.tasks} onMoveToQuickList={this.onMoveToQuickList} />
+      <TaskList tasks={this.props.tasks} onCompleteTask={this.onCompleteTask} onMoveToQuickList={this.onMoveToQuickList} onDelete={this.onDelete} />
     )
   }
 
+  private onCompleteTask = (task: Task) => {
+    this.props.completeTask(task.id)
+  }
+
   private onMoveToQuickList = (task: Task) => {
-    console.log(task)
+    this.props.moveToQuickList(task.id)
+  }
+
+  private onDelete = (task: Task) => {
+    this.props.deleteTask(task.id)
   }
 }
 

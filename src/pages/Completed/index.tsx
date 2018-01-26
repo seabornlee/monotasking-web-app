@@ -4,7 +4,7 @@ import { returntypeof } from 'react-redux-typescript'
 
 import TaskList from '../TaskList'
 import { selectCompletedTasks } from '../../selectors/tasks'
-import { fetchCompletedTasks } from '../../thunks/tasks'
+import { fetchCompletedTasks, deleteTask } from '../../thunks/tasks'
 
 const mapStateToProps = (state) => ({
   tasks: selectCompletedTasks(state),
@@ -14,6 +14,7 @@ type StateProps = typeof mapStateToPropsType
 
 const mapDispatchToProps = {
   fetchCompletedTasks,
+  deleteTask,
 }
 type DispatchProps = typeof mapDispatchToProps
 
@@ -25,8 +26,12 @@ type Props = StateProps & DispatchProps & OwnProps
 class Cpmpleted extends React.Component<Props> {
   public render () {
     return (
-      <TaskList tasks={this.props.tasks}/>
+      <TaskList tasks={this.props.tasks} onDelete={this.onDelete} />
     )
+  }
+
+  private onDelete = (task: Task) => {
+    this.props.deleteTask(task.id)
   }
 }
 

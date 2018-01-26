@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { returntypeof } from 'react-redux-typescript'
 
 import TaskList from '../TaskList'
-import { fetchQuickListTasks } from '../../thunks/tasks'
+import { fetchQuickListTasks, completeTask, moveToGrassCatcher, deleteTask } from '../../thunks/tasks'
 import { selectQuickListTasks } from '../../selectors/tasks'
 
 const mapStateToProps = (state) => ({
@@ -14,6 +14,9 @@ type StateProps = typeof mapStateToPropsType
 
 const mapDispatchToProps = {
   fetchQuickListTasks,
+  completeTask,
+  moveToGrassCatcher,
+  deleteTask,
 }
 type DispatchProps = typeof mapDispatchToProps
 
@@ -29,12 +32,20 @@ class QuickList extends React.Component<Props> {
 
   public render () {
     return (
-      <TaskList tasks={this.props.tasks} onCompleteTask={this.onCompleteTask} />
+      <TaskList tasks={this.props.tasks} onCompleteTask={this.onCompleteTask} onMoveToGrassCatcher={this.onMoveToGrassCatcher} onDelete={this.onDelete} />
     )
   }
 
-  private onCompleteTask = () => {
-    console.log('completed')
+  private onCompleteTask = (task: Task) => {
+    this.props.completeTask(task.id)
+  }
+
+  private onMoveToGrassCatcher = (task: Task) => {
+    this.props.moveToGrassCatcher(task.id)
+  }
+
+  private onDelete = (task: Task) => {
+    this.props.deleteTask(task.id)
   }
 }
 

@@ -24,3 +24,41 @@ export const fetchCompletedTasks = () => {
     })
   }
 }
+
+export const completeTask = (taskId: number) => {
+  return (dispatch, getState) => {
+    axios.post(`tasks/${taskId}/complete`).then((response) => {
+      dispatch(fetchQuickListTasks())
+      dispatch(fetchGrassCatcherTasks())
+      dispatch(fetchCompletedTasks())
+    })
+  }
+}
+
+export const moveToGrassCatcher = (taskId: number) => {
+  return (dispatch, getState) => {
+    axios.post(`tasks/${taskId}/move-to-grass-catcher`).then((response) => {
+      dispatch(fetchQuickListTasks())
+      dispatch(fetchGrassCatcherTasks())
+    })
+  }
+}
+
+export const moveToQuickList = (taskId: number) => {
+  return (dispatch, getState) => {
+    axios.post(`tasks/${taskId}/move-to-quick`).then((response) => {
+      dispatch(fetchQuickListTasks())
+      dispatch(fetchGrassCatcherTasks())
+    })
+  }
+}
+
+export const deleteTask = (taskId: number) => {
+  return (dispatch, getState) => {
+    axios.delete(`tasks/${taskId}`).then((response) => {
+      dispatch(fetchQuickListTasks())
+      dispatch(fetchGrassCatcherTasks())
+      dispatch(fetchCompletedTasks())
+    })
+  }
+}
