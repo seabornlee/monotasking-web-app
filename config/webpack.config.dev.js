@@ -16,6 +16,20 @@ module.exports = merge.smart(baseConf, {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+          },
+        ],
+      },
+      {
         test: /\.scss$/,
         use: [{
             loader: 'style-loader',
@@ -33,6 +47,7 @@ module.exports = merge.smart(baseConf, {
       },
     ]
   },
+  devtool: "eval",
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),

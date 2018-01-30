@@ -5,7 +5,8 @@
   "scripts": {
     "tslint-fix": "tslint --fix -c tslint.json -p tsconfig.json",
     "start": "webpack-dev-server --colors --config config/webpack.config.dev.js",
-    "build": "webpack --progress -p --colors --config config/webpack.config.dev.js",
+    "build:dev": "webpack --progress --colors --config config/webpack.config.dev.js",
+    "build:prod": "webpack --progress --colors --config config/webpack.config.prod.js",
     "preinstall": "export SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass"
   },
   "author": "TylerChangMore@gmail.com",
@@ -37,6 +38,7 @@
     "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.3.1",
     "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.7.2",
     "postcss": "^6.0.16",

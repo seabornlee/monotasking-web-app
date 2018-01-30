@@ -6,7 +6,6 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".json"]
   },
-  devtool: "eval",
   module: {
     rules: [
       {
@@ -25,19 +24,6 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         loader: "ts-loader",
         exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: [{
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'postcss-loader',
-          },
-        ],
       },
       {
         test: /\.(ico|png|woff|woff2|eot|ttf|svg)$/,
