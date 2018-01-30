@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { returntypeof } from 'react-redux-typescript'
-import { withRouter, Switch, Route } from 'react-router-dom'
+import { withRouter, Switch, Route, Redirect } from 'react-router-dom'
 
 import { Tabs } from '../Tabs'
 import { Button } from '../../components/Button'
@@ -51,6 +51,7 @@ class App extends React.Component<Props> {
         </div>
 
         <Switch>
+          <Redirect exact={true} path='/' to='/quick-list' />
           <Route exact={true} path='/quick-list' component={QuickList} />
           <Route exact={true} path='/grass-catcher' component={GrassCatcher} />
           <Route exact={true} path='/completed' component={Completed} />

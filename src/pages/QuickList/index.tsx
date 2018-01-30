@@ -6,7 +6,7 @@ import TaskList from '../TaskList'
 import { fetchQuickListTasks, completeTask, moveToGrassCatcher, deleteTask } from '../../thunks/tasks'
 import { selectQuickListTasks } from '../../selectors/tasks'
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Store) => ({
   tasks: selectQuickListTasks(state),
 })
 const mapStateToPropsType = returntypeof(mapStateToProps)

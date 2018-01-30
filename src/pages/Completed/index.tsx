@@ -6,7 +6,7 @@ import TaskList from '../TaskList'
 import { selectCompletedTasks } from '../../selectors/tasks'
 import { fetchCompletedTasks, deleteTask } from '../../thunks/tasks'
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: Store) => ({
   tasks: selectCompletedTasks(state),
 })
 const mapStateToPropsType = returntypeof(mapStateToProps)

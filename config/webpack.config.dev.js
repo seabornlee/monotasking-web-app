@@ -62,7 +62,7 @@ module.exports = merge.smart(baseConf, {
     inline: true,
     hot: true,
     proxy: {
-      '/v1': {
+      '/api': {
         target: 'http://localhost:3000',
         changeOrigin: true,
       }
