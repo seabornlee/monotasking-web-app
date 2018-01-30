@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const baseConf = require('./webpack.config.base')
 const paths = require("./paths")
 
-const PORT = 5080
+const PORT = 8080
 
 module.exports = merge.smart(baseConf, {
   entry: paths.appIndex,
